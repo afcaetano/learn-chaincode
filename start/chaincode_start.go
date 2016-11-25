@@ -19,7 +19,7 @@ package main
 import (
 	"errors"
 	"fmt"
-
+    "time"
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 )
 
@@ -46,7 +46,7 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 	}
 
     err := stub.PutState("hello_world", []byte(args[0]))
-    t.id = 
+    t.id = int(time.Now().Month())
     if err != nil {
         return nil, err
     }
