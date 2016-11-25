@@ -25,6 +25,8 @@ import (
 
 // SimpleChaincode example simple Chaincode implementation
 type SimpleChaincode struct {
+	id int
+	value float64
 }
 
 // ============================================================================================================================
