@@ -1,10 +1,13 @@
 .project
 node_modules
 *.exe
+*~
 
 # compiled chaincode
 start/start
 finished/finished
 
+#None of your business, Git
+start/secrets.txt
 # IntelliJ
 .idea
