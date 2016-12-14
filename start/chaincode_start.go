@@ -56,17 +56,19 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 
 // Invoke is our entry point to invoke a chaincode function
 func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
-	fmt.Println("invoke is running " + function)
-
-	// Handle different functions
-	if function == "init" {													//initialize the chaincode state, used as reset
+    fmt.Println("invoke is running " + function)
+    
+    // Handle different functions
+    switch {    
+    case function == "init":													//initialize the chaincode state, used as reset
 		return t.Init(stub, "init", args)
-    } else if function == "write" {
+    case function == "write":
         return t.write(stub, args)
-	}
-	fmt.Println("invoke did not find func: " + function)					//error
+    default:
+    }
+    fmt.Println("invoke did not find func: " + function)					//error
 
-	return nil, errors.New("Received unknown function invocation: " + function)
+    return nil, errors.New("Received unknown function invocation: " + function)
 }
 
 // My first chaincode method
